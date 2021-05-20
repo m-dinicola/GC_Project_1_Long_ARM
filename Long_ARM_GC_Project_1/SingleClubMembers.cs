@@ -10,8 +10,20 @@ namespace Long_ARM_GC_Project_1
         {
             ID = id;
             Name = name;
-            Club
+            CheckIn(club);
         }
 
+
+        public override void CheckIn(Club club)
+        {
+            try
+            {
+                Club = club;
+            }
+            catch
+            {
+                if ()
+            }
+        }
     }
 }
