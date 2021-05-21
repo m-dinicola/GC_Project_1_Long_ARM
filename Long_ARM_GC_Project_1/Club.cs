@@ -13,7 +13,11 @@ namespace Long_ARM_GC_Project_1
         {
 
         }
-
+        public Club(string name, string address)
+        {
+            Name = name;
+            Address = address;
+        }
 
     }
 }
