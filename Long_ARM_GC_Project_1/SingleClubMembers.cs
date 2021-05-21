@@ -6,23 +6,22 @@ namespace Long_ARM_GC_Project_1
 {
     class SingleClubMembers : Member
     {
-        public SingleClubMembers(int id, string name, Club club /*Club class to be added*/) : base(id, name)
+        public string TheirClub { get; set; }
+
+        public SingleClubMembers(int id, string name) : base(id, name)
         {
             ID = id;
             Name = name;
-            CheckIn(club);
         }
 
 
         public override void CheckIn(Club club)
         {
-            try
+            //check if they are checking into the appropriate club
+            if (TheirClub != club)
             {
-                Club = club;
-            }
-            catch
-            {
-                if ()
+                Console.WriteLine("This isn't the correct club");
+                //Add exception
             }
         }
     }
