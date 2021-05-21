@@ -6,7 +6,7 @@ namespace Long_ARM_GC_Project_1
 {
     class SingleClubMembers : Member
     {
-        public string TheirClub { get; set; }
+        public Club TheirClub { get; set; }
 
         public SingleClubMembers(int id, string name) : base(id, name)
         {
@@ -14,15 +14,14 @@ namespace Long_ARM_GC_Project_1
             Name = name;
         }
 
+        public static void AssaignToClub(string input)
+        {
+            TheirClub = Clubs[input];
+        }
 
         public override void CheckIn(Club club)
         {
-            //check if they are checking into the appropriate club
-            if (TheirClub != club)
-            {
-                Console.WriteLine("This isn't the correct club");
-                //Add exception
-            }
+            if (TheirClub != )
         }
     }
 }
