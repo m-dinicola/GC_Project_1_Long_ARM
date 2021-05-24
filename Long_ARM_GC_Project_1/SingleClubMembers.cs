@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Long_ARM_GC_Project_1
 {
-    class SingleClubMembers : Member
+    public class SingleClubMembers : Member
     {
         public static Club TheirClub { get; set; }
 

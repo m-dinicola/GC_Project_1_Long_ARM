@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Long_ARM_GC_Project_1
 {
-    class Multi_ClubMembers : Member
+    public class Multi_ClubMembers : Member
     {
         public int MembershipPoints { get; set; }
 

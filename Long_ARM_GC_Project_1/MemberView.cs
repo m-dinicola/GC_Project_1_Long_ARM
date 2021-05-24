@@ -4,7 +4,16 @@ using System.Text;
 
 namespace Long_ARM_GC_Project_1
 {
-    class MemberView
+    public static class MemberView
     {
+
+
+
+
+        //methods
+        public static void Display(Member m)
+        {
+
+        }
     }
 }
