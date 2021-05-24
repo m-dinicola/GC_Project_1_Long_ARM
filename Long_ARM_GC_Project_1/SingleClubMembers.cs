@@ -6,22 +6,35 @@ namespace Long_ARM_GC_Project_1
 {
     class SingleClubMembers : Member
     {
-        public Club TheirClub { get; set; }
+        public static Club TheirClub { get; set; }
 
-        public SingleClubMembers(int id, string name) : base(id, name)
+        public SingleClubMembers(int id, string name)
         {
-            ID = id;
             Name = name;
+            ID = id;
         }
 
-        public static void AssaignToClub(string input)
+        public static void AssignToClub(string input)
         {
-            TheirClub = Clubs[input];
+            if (Clubs.ClubDictionary.ContainsKey(input))
+            {
+                var inputKey = Clubs.ClubDictionary[input];
+                TheirClub = inputKey;
+                Console.WriteLine($"This user has been assaigned to {Clubs.ClubDictionary[input].Name}");
+            }
+            else
+                Console.WriteLine("I'm sorry, but that club doesen't exists.");
+            //LOOP THIS
         }
 
-        public override void CheckIn(Club club)
+        public override void CheckIn(string input)
         {
-            if (TheirClub != )
+            if (TheirClub.Name == input)
+            {
+                Console.WriteLine($"This member has been checked in!");
+            }
+            else
+                Console.WriteLine("This member isn't a part of this club!");
         }
     }
 }
