@@ -14,14 +14,14 @@ namespace Long_ARM_GC_Project_1
             ID = id;
         }
 
-        public static void AssignToClub(string input)
+        public void AssignToClub(string input)
         {
             Clubs clubs = new Clubs();
             if (clubs.ClubDictionary.ContainsKey(input))
             {
                 var inputKey = clubs.ClubDictionary[input];
                 TheirClub = inputKey;
-                Console.WriteLine($"This user has been assaigned to {clubs.ClubDictionary[input].Name}");
+                Console.WriteLine($"This user has been assaigned to {input}");
             }
             else
                 Console.WriteLine("I'm sorry, but that club doesen't exists.");
