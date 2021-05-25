@@ -4,26 +4,38 @@ using System.Text;
 
 namespace Long_ARM_GC_Project_1
 {
-    class SingleClubMembers : Member
+    public class SingleClubMembers : Member
     {
-        public SingleClubMembers(int id, string name, Club club /*Club class to be added*/) : base(id, name)
+        public static Club TheirClub { get; set; }
+
+        public SingleClubMembers(int id, string name)
         {
-            ID = id;
             Name = name;
-            CheckIn(club);
+            ID = id;
         }
 
-
-        public override void CheckIn(Club club)
+        public static void AssignToClub(string input)
         {
-            try
+            Clubs clubs = new Clubs();
+            if (clubs.ClubDictionary.ContainsKey(input))
             {
-                Club = club;
+                var inputKey = clubs.ClubDictionary[input];
+                TheirClub = inputKey;
+                Console.WriteLine($"This user has been assaigned to {clubs.ClubDictionary[input].Name}");
             }
-            catch
+            else
+                Console.WriteLine("I'm sorry, but that club doesen't exists.");
+            //LOOP THIS
+        }
+
+        public override void CheckIn(string input)
+        {
+            if (TheirClub.Name == input)
             {
-                if ()
+                Console.WriteLine($"This member has been checked in!");
             }
+            else
+                Console.WriteLine("This member isn't a part of this club!");
         }
     }
 }

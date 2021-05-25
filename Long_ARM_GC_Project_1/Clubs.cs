@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Long_ARM_GC_Project_1
 {
-    class Clubs
+    public class Clubs
     {
         public Dictionary<string, Club> ClubDictionary {get; set;}
         public Clubs()
