@@ -4,14 +4,15 @@ using System.Text;
 
 namespace Long_ARM_GC_Project_1
 {
-    public class Multi_ClubMembers : Member
+    public class MultiClubMembers : Member
     {
         public int MembershipPoints { get; set; }
 
-        public Multi_ClubMembers(int id, string name)
+        public MultiClubMembers(int id, string name)
         {
             Name = name;
             ID = id;
+            MembershipPoints = 0;
         }
 
         public override void CheckIn(string input)

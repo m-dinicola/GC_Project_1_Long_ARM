@@ -6,7 +6,7 @@ namespace Long_ARM_GC_Project_1
 {
     public class SingleClubMembers : Member
     {
-        public static Club TheirClub { get; set; }
+        public Club TheirClub { get; set; }
 
         public SingleClubMembers(int id, string name)
         {
@@ -14,14 +14,20 @@ namespace Long_ARM_GC_Project_1
             ID = id;
         }
 
-        public static void AssignToClub(string input)
+        //Overload to construct member with club
+        public SingleClubMembers(int id, string name, Club club) : this(id, name)
+        {
+            this.AssignToClub(club.Name);
+        }
+
+        //methods
+        public void AssignToClub(string input)
         {
             Clubs clubs = new Clubs();
             if (clubs.ClubDictionary.ContainsKey(input))
             {
-                var inputKey = clubs.ClubDictionary[input];
-                TheirClub = inputKey;
-                Console.WriteLine($"This user has been assaigned to {clubs.ClubDictionary[input].Name}");
+                TheirClub = clubs.ClubDictionary[input];
+                Console.WriteLine($"{this.Name} has been assaigned to {input}");
             }
             else
                 Console.WriteLine("I'm sorry, but that club doesen't exists.");
