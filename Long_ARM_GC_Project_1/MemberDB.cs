@@ -25,11 +25,12 @@ namespace Long_ARM_GC_Project_1
 
         public Member MemberFactory(string[] input) 
         {
+            int id = int.Parse(input[0]);
             if (input.Length == 3)
             {
-                return new SingleClubMembers(int.Parse(input[0]), input[1], _clubDB.ClubDictionary[input[3]]);
+                return new SingleClubMembers(id, input[1], _clubDB.ClubDictionary[input[3]]);
             }    
-            return new MultiClubMembers(input[0], input[0]);
+            return new MultiClubMembers(id, input[0]);
         }
     }
 }
