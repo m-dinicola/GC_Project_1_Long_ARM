@@ -6,7 +6,7 @@ namespace Long_ARM_GC_Project_1
     {
         static void Main(string[] args)
         {
-            
+            MainMenuControl.WelcomeAction();
         }
     }
 }
