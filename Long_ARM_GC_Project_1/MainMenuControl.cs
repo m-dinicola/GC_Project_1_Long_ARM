@@ -36,7 +36,7 @@ namespace Long_ARM_GC_Project_1
                 Console.WriteLine("Would you like to perform another action? (y/n)");
                 string input = Console.ReadLine();
                 while (input != "y" && input != "yes" && input != "n" && input != "no")
-                {       //if the entry was invalid, we will re-prompwt.
+                {       //if the entry was invalid, we will re-prompt.
                     Console.Write($"Invalid entry \"{input}\". Please try again. ");
                     input = Console.ReadLine();
                 }
