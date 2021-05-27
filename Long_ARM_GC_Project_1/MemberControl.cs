@@ -4,8 +4,6 @@ using System.Text;
 
 namespace Long_ARM_GC_Project_1
 {
-
-
     public static class MemberControl
     {
         public static MemberDB members = new MemberDB(new Clubs());
@@ -30,10 +28,10 @@ namespace Long_ARM_GC_Project_1
                     DisplayMemberInfo();
                     break;
                 case 2:
-                    
+                    AddMember();
                     break;
                 case 3:
-                    //BillOfFees()
+                    RemoveMember();
                     break;
                 default:
                     return false;
@@ -44,7 +42,7 @@ namespace Long_ARM_GC_Project_1
 
         public static Member MemberSelect(string action)
         {
-            while (true) {                                          //currently, loop cannot be exited if you do not want to follow through. Possible added functionality.
+            while (true) {                        //currently, loop cannot be exited if you do not want to follow through. Possible added functionality.
                 int _ID;
                 string orID = "";
                 if (action.ToLower() != "add")
@@ -72,6 +70,16 @@ namespace Long_ARM_GC_Project_1
             }
         }
 
+        public static void AddMember()
+        {
+
+        }
+
+        public static void RemoveMember()
+        {
+
+        }
+        
         public static void DisplayMemberInfo()
         {
             var member = MemberSelect("display");
