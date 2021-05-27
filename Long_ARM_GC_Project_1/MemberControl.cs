@@ -28,10 +28,10 @@ namespace Long_ARM_GC_Project_1
                     DisplayMemberInfo();
                     break;
                 case 2:
-                    
+                    AddMember();
                     break;
                 case 3:
-                    //BillOfFees()
+                    RemoveMember();
                     break;
                 default:
                     return false;
@@ -42,7 +42,7 @@ namespace Long_ARM_GC_Project_1
 
         public static Member MemberSelect(string action)
         {
-            while (true) {                                          //currently, loop cannot be exited if you do not want to follow through. Possible added functionality.
+            while (true) {                        //currently, loop cannot be exited if you do not want to follow through. Possible added functionality.
                 int _ID;
                 string orID = "";
                 if (action.ToLower() != "add")
@@ -70,6 +70,15 @@ namespace Long_ARM_GC_Project_1
             }
         }
 
+        public static void AddMember()
+        {
+
+        }
+
+        public static void RemoveMember()
+        {
+
+        }
         public static void DisplayMemberInfo(MemberSelect member)           //I put in a MemberSelect method above so that you can call it within your method at the right time.
         {                                                                   //it's not a class, so can't be turned into an object. It's just a method that returns a "Member" object.
             Console.WriteLine($"Member: {member.Name} \nID:{member.ID}");
