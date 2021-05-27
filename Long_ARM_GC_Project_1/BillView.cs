@@ -13,9 +13,11 @@ namespace Long_ARM_GC_Project_1
                 $"\nEquipment - {newBill.Equipment}\nSpa - {newBill.Spa}\nClasses - {newBill.Classes}\nParking - {newBill.Parking}");
         }
 
-        public static void MultiDisplayBill(MultiClubMembers member)
+        public static void DisplayBill(MultiClubMembers member)
         {
-            DisplayBill(member);
+            Bill newBill = new Bill();
+            Console.WriteLine($"This is the bill of fees for {member.Name}:\nMonthly Plan - {newBill.MonthlyPlan}" +
+                $"\nEquipment - {newBill.Equipment}\nSpa - {newBill.Spa}\nClasses - {newBill.Classes}\nParking - {newBill.Parking}\n");
             Console.WriteLine($"Membership Points - {member.MembershipPoints}");
         }
     }
