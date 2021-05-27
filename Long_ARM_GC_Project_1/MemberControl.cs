@@ -76,10 +76,12 @@ namespace Long_ARM_GC_Project_1
         {
             var member = MemberSelect("display");
 
-
-            Console.WriteLine(ParseMember(member));
-            
+            if (typeof(Member).GetProperty("TheirClub") != null)
+                Console.WriteLine(ParseMember((SingleClubMembers)member));
+            else
+                Console.WriteLine(ParseMember((MultiClubMembers)member));
         }
+
         public static string ParseMember(SingleClubMembers member)
         {
             return ($"\nClub: {member.TheirClub.Name}\n Address: {member.TheirClub.Address}");
