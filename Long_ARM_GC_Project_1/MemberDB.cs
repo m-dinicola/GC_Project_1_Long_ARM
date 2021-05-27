@@ -23,7 +23,19 @@ namespace Long_ARM_GC_Project_1
             }
         }
 
-        public Member MemberFactory(string[] input) 
+        public Member GetMemberByName(string name)
+        {
+            foreach(Member member in Members.Values)
+            {
+                if (member.Name.ToLower() == name.ToLower())
+                {
+                    return member;
+                }
+            }
+            return null;
+        }
+
+        public static Member MemberFactory(string[] input) 
         {
             int id = int.Parse(input[0]);
             if (input.Length == 3)
