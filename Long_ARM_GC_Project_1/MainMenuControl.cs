@@ -6,6 +6,7 @@ namespace Long_ARM_GC_Project_1
 {
     public static class MainMenuControl
     {
+        private static List<string> options = new List<string> { "Add/Remove/Display a Member", "Check a Member in", "Display a Bill of Fees", "Exit" };
         public static Clubs ClubDB { get; set; }
 
 
@@ -20,10 +21,9 @@ namespace Long_ARM_GC_Project_1
             bool tryAgain = true;
             while (tryAgain)
             {
-                Console.WriteLine("Please select an option from the following list:");  //after loop starts, so it will display on tryAgains
-                OptionView.Display(OptionView.MainOptions);                       //Display the list of options.
+                OptionView.Display(options);                       //Display the list of options.
                 int selection = -1;                         //selection will remain -1 if output was invalid.
-                while (!int.TryParse(Console.ReadLine(), out selection) || selection > OptionView.MainOptions.Count || selection <= 0)
+                while (!int.TryParse(Console.ReadLine(), out selection) || selection > options.Count || selection <= 0)
                 {                       //if tryParse fails, or if the int is outside the range of options this will run.
                     Console.Write($"Invalid entry. Please enter the number of your desired option. ");
                 }
@@ -48,7 +48,7 @@ namespace Long_ARM_GC_Project_1
             switch (selection)
             {
                 case 1:
-                    //EditMembers()
+                    MemberControl.EditMembers();
                     break;
                 case 2:
                     //CheckIn
