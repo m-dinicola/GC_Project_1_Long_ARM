@@ -69,13 +69,9 @@ namespace Long_ARM_GC_Project_1
                 }
             }
         }
-    class MemberControl
-    {
 
-
-
-        public static void DisplayMemberInfo(MemberSelect member)
-        {
+        public static void DisplayMemberInfo(MemberSelect member)           //I put in a MemberSelect method above so that you can call it within your method at the right time.
+        {                                                                   //it's not a class, so can't be turned into an object. It's just a method that returns a "Member" object.
             Console.WriteLine($"Member: {member.Name} \nID:{member.ID}");
             if (member.HasProperty(TheirClub))
             {
