@@ -17,7 +17,7 @@ namespace Long_ARM_GC_Project_1
         //Overload to construct member with club
         public SingleClubMembers(int id, string name, Club club) : this(id, name)
         {
-            this.AssignToClub(club.Name);
+            TheirClub = club;
         }
 
         //methods
@@ -27,7 +27,7 @@ namespace Long_ARM_GC_Project_1
             if (clubs.ClubDictionary.ContainsKey(input))
             {
                 TheirClub = clubs.ClubDictionary[input];
-                Console.WriteLine($"{this.Name} has been assaigned to {input}");
+                Console.WriteLine($"{this.Name} has been assigned to {input}");
             }
             else
                 Console.WriteLine("I'm sorry, but that club doesen't exists.");

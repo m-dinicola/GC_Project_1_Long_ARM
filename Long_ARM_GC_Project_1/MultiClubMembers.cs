@@ -15,8 +15,14 @@ namespace Long_ARM_GC_Project_1
             MembershipPoints = 0;
         }
 
+        public MultiClubMembers(int id, string name, int points) : this(id, name)
+        {
+            MembershipPoints = points;
+        }
+
         public override void CheckIn(string input)
         {
+            Console.WriteLine("This member has been checked in");
             MembershipPoints++;
         }
     }

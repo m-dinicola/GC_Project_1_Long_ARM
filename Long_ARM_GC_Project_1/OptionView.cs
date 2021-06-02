@@ -6,12 +6,10 @@ namespace Long_ARM_GC_Project_1
 {
     public class OptionView
     {
-        //properties
-        public static List<string> MainOptions = new List<string>{ "Add/Remove/Display a Member","Check a Member in","Display a Bill of Fees","Exit" };
-
         //methods
         public static void Display(List<string> options)
         {
+            Console.WriteLine("Please select an option from the following list:");
             int i = 1;
             foreach(string s in options)
             {
