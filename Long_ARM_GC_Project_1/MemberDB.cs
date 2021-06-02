@@ -8,7 +8,7 @@ namespace Long_ARM_GC_Project_1
     public class MemberDB
     {
         private Clubs _clubDB;
-        public Dictionary<int, Member> Members;
+        public Dictionary<int, Member> Members { get; set; }
 
         public MemberDB(Clubs clubDB)
         {
@@ -21,6 +21,48 @@ namespace Long_ARM_GC_Project_1
                 Member m = MemberFactory(split);
                 Members.Add(m.ID, m);
             }
+        }
+        
+        public void AppendMemberToFile(Member m)
+        {
+            List<string> memberText = new List<string>();
+            if (m.GetType().GetProperty("MembershipPoints") != null)
+            {
+                memberText.Add(MemberToString((MultiClubMembers)m));
+            }
+            else
+            {
+                memberText.Add(MemberToString((SingleClubMembers)m));
+            }
+            File.AppendAllLines("../../../Members.txt", memberText);
+        }
+
+        public void UpdateMembersFile()
+        {
+            List<string> fileLines = new List<string>();
+            foreach(Member m in Members.Values)
+            {
+                if (m.GetType().GetProperty("MembershipPoints") != null)
+                {
+                    fileLines.Add(MemberToString((MultiClubMembers)m));
+                }
+                else
+                {
+                    fileLines.Add(MemberToString((SingleClubMembers)m));
+                }
+            }
+            File.WriteAllLines("../../../Members.txt",fileLines);
+        }
+
+
+        public static string MemberToString(MultiClubMembers m)
+        {
+            return $"{m.ID}|{m.Name}|{m.MembershipPoints}";
+        }
+
+        public static string MemberToString(SingleClubMembers m)
+        {
+            return $"{m.ID}|{m.Name}|{m.TheirClub.Name}";
         }
 
         public Member GetMemberByName(string name)
@@ -35,14 +77,21 @@ namespace Long_ARM_GC_Project_1
             return null;
         }
 
-        public static Member MemberFactory(string[] input) 
+        public Member MemberFactory(string[] input) 
         {
             int id = int.Parse(input[0]);
-            if (input.Length == 3)
+            int points;
+            if (int.TryParse(input[2], out points))
             {
-                return new SingleClubMembers(id, input[1], _clubDB.ClubDictionary[input[3]]);
+            return new MultiClubMembers(id, input[1], points);
             }    
-            return new MultiClubMembers(id, input[0]);
+                return new SingleClubMembers(id, input[1], _clubDB.ClubDictionary[input[2]]);
+        }
+
+        public void Add(Member m)
+        {
+            Members.Add(m.ID, m);
+            AppendMemberToFile(m);
         }
     }
 }

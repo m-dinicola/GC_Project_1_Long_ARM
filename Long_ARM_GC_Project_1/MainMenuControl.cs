@@ -48,7 +48,7 @@ namespace Long_ARM_GC_Project_1
             switch (selection)
             {
                 case 1:
-                    MemberControl.EditMembers();
+                    MemberControl.MemberActions();
                     break;
                 case 2:
                     //CheckIn
