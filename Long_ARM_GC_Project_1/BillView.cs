@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Long_ARM_GC_Project_1
 {
-    class BillView
+    public static class BillView
     {
         public static void DisplayBill(Member member)
         {

@@ -20,5 +20,8 @@ namespace Long_ARM_GC_Project_1
             Classes = 24.99;
             Parking = 9.99;
         }
+
+        //The bill class is a good opportunity to have a different pay-scale for different gyms
+        //We would have to include a bill in each Club definition, and in the multi-club member constructor
     }
 }

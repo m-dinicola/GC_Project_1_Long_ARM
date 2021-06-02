@@ -52,9 +52,11 @@ namespace Long_ARM_GC_Project_1
                     break;
                 case 2:
                     //CheckIn
+                    MemberControl.CheckInMember();
                     break;
                 case 3:
                     //BillOfFees()
+                    BillView.DisplayBill(MemberControl.MemberSelect("print a bill for"));
                     break;
                 default:
                     return false;
