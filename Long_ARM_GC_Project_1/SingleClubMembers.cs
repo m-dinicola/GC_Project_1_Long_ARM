@@ -33,15 +33,21 @@ namespace Long_ARM_GC_Project_1
                 Console.WriteLine("I'm sorry, but that club doesen't exists.");
             //LOOP THIS
         }
-
-        public override void CheckIn(string input)
+        //possible extension - allow changing from single club to multiclub member
+        public override void CheckIn(Club club)
         {
-            if (TheirClub.Name == input)
+            try
             {
-                Console.WriteLine($"This member has been checked in!");
+                if (club.Name != TheirClub.Name)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                Console.WriteLine("This member has been checked in");
             }
-            else
-                Console.WriteLine("This member isn't a part of this club!");
+            catch(IndexOutOfRangeException)
+            {
+                Console.WriteLine("This member is not a member of this club");
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Long_ARM_GC_Project_1
             MembershipPoints = points;
         }
 
-        public override void CheckIn(string input)
+        public override void CheckIn(Club club)
         {
             Console.WriteLine("This member has been checked in");
             MembershipPoints++;
