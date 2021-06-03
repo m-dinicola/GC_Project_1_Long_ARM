@@ -15,9 +15,15 @@ namespace Long_ARM_GC_Project_1
             Member member = MemberSelect("check in");
             Console.WriteLine("Please enter the club name: ");
             string input = Console.ReadLine();
-            member.CheckIn(input);
+            
+                Club club = new Club();
+                club.Name = input;
+                member.CheckIn(club);
+            
+
         }
 
+     
         public static void MemberActions()
         {
             List<string> options = new List<string> { "Display Member", "Add Member", "Remove Member", "Exit" };
