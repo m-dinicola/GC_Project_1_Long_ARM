@@ -121,12 +121,15 @@ namespace Long_ARM_GC_Project_1
             {
                 Console.Write($"Please enter the name of the club that {name} would like to join: ");
                 Club club = clubs.ClubDictionary[Console.ReadLine()];
-                members.Add(new SingleClubMembers(_ID, name, club));
-                return true;
+                if (getYesNo($"The person named \"{name}\" would like to be a member of {name}. Is this correct?"))
+                {
+                    members.Add(new SingleClubMembers(_ID, name, club));
+                    return true;
+                }
             }
-            catch (Exception e)
+            catch (KeyNotFoundException e)
             {
-                Console.WriteLine("No such club exists. Please try again." + e.Message);
+                Console.WriteLine($"No such club exists. Please try again. " + e.Message);
             }
             return false;
         }
