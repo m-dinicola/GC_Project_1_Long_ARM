@@ -61,10 +61,14 @@ namespace Long_ARM_GC_Project_1
             while (true)
             {
                 int _ID;
+<<<<<<< HEAD
 
 
                 Console.WriteLine($"Please enter the name or ID number of the member you would like to {action}. Leave the field blank to go back to the Main Menu.\n");
 
+=======
+                Console.WriteLine($"Please enter the name or ID number of the member you would like to {action}. Leave the field blank to go back to the Main Menu.");
+>>>>>>> 4351dff460b60eff97b3c313d46f8fe6fe894bbb
                 string response = Console.ReadLine().Trim();
                 if (response == "")
                 {
