@@ -15,15 +15,15 @@ namespace Long_ARM_GC_Project_1
             Member member = MemberSelect("check in");
             Console.WriteLine("Please enter the club name: ");
             string input = Console.ReadLine();
-            
-                Club club = new Club();
-                club.Name = input;
-                member.CheckIn(club);
-            
+
+            Club club = new Club();
+            club.Name = input;
+            member.CheckIn(club);
+
 
         }
 
-     
+
         public static void MemberActions()
         {
             List<string> options = new List<string> { "Display Member", "Add Member", "Remove Member", "Exit" };
@@ -59,10 +59,14 @@ namespace Long_ARM_GC_Project_1
         public static Member MemberSelect(string action)
         {
             while (true)
-            {                        //currently, loop cannot be exited if you do not want to follow through. Possible added functionality.
+            {
                 int _ID;
-                Console.WriteLine($"Please enter the name or ID number of the member you would like to {action}.");
+                Console.WriteLine($"Please enter the name or ID number of the member you would like to {action}. Leave the field blank to go back to the Main Menu.");
                 string response = Console.ReadLine().Trim();
+                if (response == "")
+                {
+                    return null;
+                }
                 if (int.TryParse(response, out _ID))
                 {
                     try
@@ -130,6 +134,10 @@ namespace Long_ARM_GC_Project_1
         public static void RemoveMember()
         {
             Member member = MemberSelect("remove");
+            if (member == null)
+            {
+                return;
+            }
             members.Members.Remove(member.ID);
             members.UpdateMembersFile();
             Console.WriteLine($"{member.Name} has been removed from the system.");
@@ -138,7 +146,10 @@ namespace Long_ARM_GC_Project_1
         public static void DisplayMemberInfo()
         {
             var member = MemberSelect("display");
-
+            if (member == null)
+            {
+                return;
+            }
             if (member.GetType().GetProperty("TheirClub") != null)
             {
                 Console.WriteLine(ParseMember((SingleClubMembers)member));
