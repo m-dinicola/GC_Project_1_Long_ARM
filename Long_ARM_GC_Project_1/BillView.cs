@@ -10,7 +10,7 @@ namespace Long_ARM_GC_Project_1
         {
             Bill newBill = new Bill();
             Console.WriteLine($"This is the bill of fees for {member.Name}:\nMonthly Plan - {newBill.MonthlyPlan}" +
-                $"\nEquipment - {newBill.Equipment}\nSpa - {newBill.Spa}\nClasses - {newBill.Classes}\nParking - {newBill.Parking}");
+                $"\nEquipment - ${newBill.Equipment}\nSpa - ${newBill.Spa}\nClasses - ${newBill.Classes}\nParking - ${newBill.Parking}");
             Console.WriteLine();
         }
 
@@ -18,7 +18,7 @@ namespace Long_ARM_GC_Project_1
         {
             Bill newBill = new Bill();
             Console.WriteLine($"This is the bill of fees for {member.Name}:\nMonthly Plan - {newBill.MonthlyPlan}" +
-                $"\nEquipment - {newBill.Equipment}\nSpa - {newBill.Spa}\nClasses - {newBill.Classes}\nParking - {newBill.Parking}\n");
+                $"\nEquipment - ${newBill.Equipment}\nSpa - ${newBill.Spa}\nClasses - ${newBill.Classes}\nParking - ${newBill.Parking}\n");
             Console.WriteLine($"Membership Points - {member.MembershipPoints}");
             Console.WriteLine();
         }
