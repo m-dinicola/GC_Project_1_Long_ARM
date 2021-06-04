@@ -17,7 +17,7 @@ namespace Long_ARM_GC_Project_1
 
         public static void WelcomeAction()
         {
-            Console.WriteLine("Hello, welcome to Universal Fitness");
+            Console.WriteLine("Hello, welcome to Universal Fitness \n");
             bool tryAgain = true;
             while (tryAgain)
             {
@@ -25,7 +25,7 @@ namespace Long_ARM_GC_Project_1
                 int selection = -1;                         //selection will remain -1 if output was invalid.
                 while (!int.TryParse(Console.ReadLine(), out selection) || selection > options.Count || selection <= 0)
                 {                       //if tryParse fails, or if the int is outside the range of options this will run.
-                    Console.Write($"Invalid entry. Please enter the number of your desired option. ");
+                    Console.Write($"Invalid entry. Please enter the number of your desired option. \n ");
                 }
                 tryAgain = FunctionSwitch(selection);
                 //once a valid selection is confirmed, put up view for the option at the selection's index
