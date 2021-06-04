@@ -15,7 +15,9 @@ namespace Long_ARM_GC_Project_1
             {
                 Console.WriteLine($"{i}. {s}");
                 i++;
+                
             }
+            Console.WriteLine();
         }
     }
 }
