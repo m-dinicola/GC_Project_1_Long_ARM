@@ -6,9 +6,9 @@ namespace Long_ARM_GC_Project_1
 {
     public static class MainMenuControl
     {
-        private static List<string> options = new List<string> { "Add/Remove/Display a Member", "Check a Member in", "Display a Bill of Fees", "Exit" };
+        private static List<string> options = new List<string> { "Display/Add/Remove a Member", "Check a Member in", "Display a Bill of Fees", "Exit" };
         public static Clubs ClubDB { get; set; }
-        private static FauxGUI _GUI = new FauxGUI(ConsoleColor.Black, ConsoleColor.Green);
+        
 
         public static void MemberAction(Member m)         //displays the info of the member passed to it.
         {
@@ -20,7 +20,7 @@ namespace Long_ARM_GC_Project_1
             bool tryAgain = true;
             while (tryAgain)
             {
-                int selection = MenuLoop();
+                int selection = MenuLoop("Hello, welcome to Universal Fitness!", options);
 
                 //int selection = -1;                         //selection will remain -1 if output was invalid.
                 //while (!int.TryParse(Console.ReadLine(), out selection) || selection > options.Count || selection <= 0)
@@ -43,24 +43,20 @@ namespace Long_ARM_GC_Project_1
             Console.WriteLine("See Ya, Bro. May your weights be heavy, and your gains plentiful.");
         }
 
-        public static int MenuLoop()
+        public static int MenuLoop(string header, List<string> _options)
         {
             int selection = 0;
             while (true)
             {
-                _GUI.SetHeader("Hello, welcome to Universal Fitness!"); //add the header to the buffer
-                _GUI.ResetBuffer();
-                _GUI.SetMenu(OptionView.Display(options, selection));              //add the menu to the buffer
-                _GUI.SetMenuWait();
-                _GUI.RefreshGUI();
-                ConsoleKey keyPress = Console.ReadKey(false).Key;
+                MainMenuView.RefreshGUI(header, _options, selection);
+                ConsoleKey keyPress = Console.ReadKey(true).Key;
                 switch (keyPress)
                 {
                     case ConsoleKey.UpArrow:
                         selection = Math.Max(0, selection - 1);
                         break;
                     case ConsoleKey.DownArrow:
-                        selection = Math.Min(options.Count - 1, selection + 1);
+                        selection = Math.Min(_options.Count - 1, selection + 1);
                         break;
                     default:
                         break;

@@ -31,9 +31,11 @@ namespace Long_ARM_GC_Project_1
 
         public void SetMenu(string menuHeader, List<string> options, int highlight)
         {
-            List<GraphicUnit> graphicUnits = new List<GraphicUnit>();
-            graphicUnits.Add(GetGU(menuHeader +'\n', false));
-            foreach(string option in options)
+            List<GraphicUnit> graphicUnits = new List<GraphicUnit>
+            {
+                GetGU(menuHeader + '\n', false)
+            };
+            foreach (string option in options)
             {
                 graphicUnits.Add(GetGU(option + '\n', false));
             }
@@ -48,7 +50,7 @@ namespace Long_ARM_GC_Project_1
 
         public void SetPrompt(string prompt)
         {
-            GUIBuffer.Add(GetGU('\n' + prompt + "  ", true));
+            GUIBuffer.Add(GetGU('\n' + prompt + "  ", false));
             GUIBuffer.Add(GetGU(" ", false));
         }
 
@@ -70,6 +72,33 @@ namespace Long_ARM_GC_Project_1
         {
             GUIBuffer = new List<GraphicUnit> { new GraphicUnit(DefaultBG, DefaultFG, "") };
             SetHeader(CurrentHeader);
+        }
+
+        public void AddLine()
+        {
+            GUIBuffer.Add(GetGU("\n", false));
+        }
+
+        public void AddText(string text)
+        {
+            GUIBuffer.Add(GetGU(text, false));
+        }
+
+        public void AddText(List<string> text)
+        {
+            foreach (string s in text)
+            {
+                GUIBuffer.Add(GetGU(s, false));
+            }
+
+        }
+
+        public void AddLines(int num)
+        {
+            for(int i=0; i<num; i++)
+            {
+                AddLine();
+            }
         }
 
         public GraphicUnit GetGU(string text, bool invert)

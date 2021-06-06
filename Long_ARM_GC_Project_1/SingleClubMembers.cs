@@ -42,11 +42,11 @@ namespace Long_ARM_GC_Project_1
                 {
                     throw new IndexOutOfRangeException();
                 }
-                Console.WriteLine("The Member has been checked in.\n");
+                Console.WriteLine("The Member has been checked in. (Enter to continue)\n");
             }
             catch(IndexOutOfRangeException)
             {
-                Console.WriteLine("The member is not a member of this club.\n");
+                Console.WriteLine("The member is not a member of this club. (Enter to continue)\n");
             }
         }
     }
