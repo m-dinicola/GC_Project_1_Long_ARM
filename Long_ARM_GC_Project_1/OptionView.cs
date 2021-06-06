@@ -15,6 +15,7 @@ namespace Long_ARM_GC_Project_1
             {
                 numerated.Add($"{i}. {s}");
                 i++;
+                
             }
             return new Tuple<string, List<string>, int>("Please select an option from the following list:",numerated, 0);
         }

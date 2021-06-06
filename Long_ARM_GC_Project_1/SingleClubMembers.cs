@@ -27,10 +27,10 @@ namespace Long_ARM_GC_Project_1
             if (clubs.ClubDictionary.ContainsKey(input))
             {
                 TheirClub = clubs.ClubDictionary[input];
-                Console.WriteLine($"{this.Name} has been assigned to {input}");
+                Console.WriteLine("This member has been assigned to {input}\n");
             }
             else
-                Console.WriteLine("I'm sorry, but that club doesen't exists.");
+                Console.WriteLine($"I'm sorry, but {input} is not a valid club.\n");
             //LOOP THIS
         }
         //possible extension - allow changing from single club to multiclub member
@@ -42,11 +42,11 @@ namespace Long_ARM_GC_Project_1
                 {
                     throw new IndexOutOfRangeException();
                 }
-                Console.WriteLine("This member has been checked in");
+                Console.WriteLine("The Member has been checked in.\n");
             }
             catch(IndexOutOfRangeException)
             {
-                Console.WriteLine("This member is not a member of this club");
+                Console.WriteLine("The member is not a member of this club.\n");
             }
         }
     }

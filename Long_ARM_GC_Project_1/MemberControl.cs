@@ -13,17 +13,17 @@ namespace Long_ARM_GC_Project_1
         public static void CheckInMember()
         {
             Member member = MemberSelect("check in");
-            Console.WriteLine("Please enter the club name: ");
+            Console.WriteLine("Please enter the club name: \n");
             string input = Console.ReadLine();
-            
-                Club club = new Club();
-                club.Name = input;
-                member.CheckIn(club);
-            
+
+            Club club = new Club();
+            club.Name = input;
+            member.CheckIn(club);
+
 
         }
 
-     
+
         public static void MemberActions()
         {
             List<string> options = new List<string> { "Display Member", "Add Member", "Remove Member", "Exit" };
@@ -31,7 +31,7 @@ namespace Long_ARM_GC_Project_1
             int selection = -1;                         //selection will remain -1 if output was invalid.
             while (!int.TryParse(Console.ReadLine(), out selection) || selection > options.Count || selection <= 0)
             {                       //if tryParse fails, or if the int is outside the range of options this will run.
-                Console.Write($"Invalid entry. Please enter the number of your desired option. ");
+                Console.Write($"Invalid entry. Please enter the number of your desired option. \n");
             }
             FunctionSwitch(selection);
         }
@@ -59,10 +59,16 @@ namespace Long_ARM_GC_Project_1
         public static Member MemberSelect(string action)
         {
             while (true)
-            {                        //currently, loop cannot be exited if you do not want to follow through. Possible added functionality.
+            {
                 int _ID;
-                Console.WriteLine($"Please enter the name or ID number of the member you would like to {action}.");
+
+                Console.WriteLine($"Please enter the name or ID number of the member you would like to {action}. Leave the field blank to go back to the Main Menu.");
+
                 string response = Console.ReadLine().Trim();
+                if (response == "")
+                {
+                    return null;
+                }
                 if (int.TryParse(response, out _ID))
                 {
                     try
@@ -71,7 +77,7 @@ namespace Long_ARM_GC_Project_1
                     }
                     catch
                     {
-                        Console.WriteLine($"There is no member with ID number {_ID}.");
+                        Console.WriteLine($"There is no member with ID number {_ID}.\n");
                     }
                 }
                 else
@@ -81,7 +87,7 @@ namespace Long_ARM_GC_Project_1
                     {
                         return foundMember;
                     }
-                    Console.WriteLine($"No member was found with name \"{response}\".");
+                    Console.WriteLine($"No member was found with name \"{response}\".\n");
                 }
             }
         }
@@ -90,7 +96,7 @@ namespace Long_ARM_GC_Project_1
         {
             while (!AddMemberLoop())
             {
-                if (getYesNo("Would you like to go back to the Member Menu?"))
+                if (getYesNo("Would you like to go back to the Member Menu?\n"))
                 {
                     return;
                 }
@@ -102,11 +108,11 @@ namespace Long_ARM_GC_Project_1
         public static bool AddMemberLoop()
         {
             int _ID = Math.Max(9999, members.Members.Keys.Max()) + 1;
-            Console.Write("Please enter the name of the person you would like to add as a new member: ");
+            Console.Write("Please enter the name of the person you would like to add as a new member: \n");
             string name = Console.ReadLine();
-            if (getYesNo($"Would {name} like to join the Universal Fitness Program, and be able to enter any participating club?"))
+            if (getYesNo($"Would {name} like to join the Universal Fitness Program, and be able to enter any participating club?\n"))
             {
-                if (getYesNo($"The person named \"{name}\" would like to be a Universal Fitness Program member. Is this correct?"))
+                if (getYesNo($"The person named \"{name}\" would like to be a Universal Fitness Program member. Is this correct?\n "))
                 {
                     members.Add(new MultiClubMembers(_ID, name));
                     return true;
@@ -115,14 +121,18 @@ namespace Long_ARM_GC_Project_1
             }
             try
             {
-                Console.Write($"Please enter the name of the club that {name} would like to join: ");
+                Console.Write($"Please enter the name of the club that {name} would like to join: \n");
                 Club club = clubs.ClubDictionary[Console.ReadLine()];
-                members.Add(new SingleClubMembers(_ID, name, club));
-                return true;
+                if (getYesNo($"The person named \"{name}\" would like to be a member of {name}. Is this correct?"))
+                {
+                    members.Add(new SingleClubMembers(_ID, name, club));
+                    return true;
+                }
             }
-            catch (Exception e)
+            catch (KeyNotFoundException e)
             {
-                Console.WriteLine("No such club exists. Please try again." + e.Message);
+                Console.WriteLine("No such club exists. Please try again." + e.Message );
+                Console.WriteLine();
             }
             return false;
         }
@@ -130,15 +140,22 @@ namespace Long_ARM_GC_Project_1
         public static void RemoveMember()
         {
             Member member = MemberSelect("remove");
+            if (member == null)
+            {
+                return;
+            }
             members.Members.Remove(member.ID);
             members.UpdateMembersFile();
-            Console.WriteLine($"{member.Name} has been removed from the system.");
+            Console.WriteLine($"{member.Name} has been removed from the system.\n");
         }
 
         public static void DisplayMemberInfo()
         {
             var member = MemberSelect("display");
-
+            if (member == null)
+            {
+                return;
+            }
             if (member.GetType().GetProperty("TheirClub") != null)
             {
                 Console.WriteLine(ParseMember((SingleClubMembers)member));
@@ -151,11 +168,11 @@ namespace Long_ARM_GC_Project_1
 
         public static string ParseMember(SingleClubMembers member)
         {
-            return ($"\nClub: {member.TheirClub.Name}\n Address: {member.TheirClub.Address}");
+            return ($"\nClub: {member.TheirClub.Name}\n Address: {member.TheirClub.Address}\n");
         }
         public static string ParseMember(MultiClubMembers member)
         {
-            return ($"Club: Universal\n Membership Points: {member.MembershipPoints}");
+            return ($"Club: Universal\n Membership Points: {member.MembershipPoints}\n");
         }
 
         public static bool getYesNo(string message)
@@ -164,7 +181,7 @@ namespace Long_ARM_GC_Project_1
             string input = Console.ReadLine();
             while (input != "y" && input != "yes" && input != "n" && input != "no")
             {       //if the entry was invalid, we will re-prompt.
-                Console.Write($"Invalid entry \"{input}\". Please try again. ");
+                Console.Write($"Invalid entry \"{input}\". Please try again. \n");
                 input = Console.ReadLine();
             }
             return input[0] == 'y';

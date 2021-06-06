@@ -22,7 +22,7 @@ namespace Long_ARM_GC_Project_1
 
         public override void CheckIn(Club club)
         {
-            Console.WriteLine("This member has been checked in");
+            Console.WriteLine("This member has been checked in\n");
             MembershipPoints++;
         }
     }
