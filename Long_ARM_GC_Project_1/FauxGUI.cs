@@ -11,18 +11,11 @@ namespace Long_ARM_GC_Project_1
         public ConsoleColor DefaultFG { get; set; }
         public string CurrentHeader { get; set; }
 
-        public FauxGUI()
-        {
-            GUIBuffer = new List<GraphicUnit>();
-            DefaultBG = ConsoleColor.Black;
-            DefaultFG = ConsoleColor.Green;
-        }
-
         public FauxGUI(ConsoleColor bg, ConsoleColor fg)
         {
             DefaultBG = bg;
             DefaultFG = fg;
-            GUIBuffer = new List<GraphicUnit> { new GraphicUnit(bg, fg, "")};
+            GUIBuffer = new List<GraphicUnit> { new GraphicUnit(bg, fg, "") };
         }
 
         public void SetHeader(string header)
@@ -44,7 +37,7 @@ namespace Long_ARM_GC_Project_1
             {
                 graphicUnits.Add(GetGU(option + '\n', false));
             }
-            graphicUnits[highlight] = GetGU(options[highlight] + '\n', true);
+            graphicUnits[highlight+1] = GetGU(options[highlight] + '\n', true);     //has to hilight+1 b/c addition of header
             GUIBuffer.AddRange(graphicUnits);
         }
 
@@ -75,7 +68,7 @@ namespace Long_ARM_GC_Project_1
 
         public void ResetBuffer()
         {
-            GUIBuffer = new List<GraphicUnit>();
+            GUIBuffer = new List<GraphicUnit> { new GraphicUnit(DefaultBG, DefaultFG, "") };
             SetHeader(CurrentHeader);
         }
 

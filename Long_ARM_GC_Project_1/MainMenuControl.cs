@@ -8,7 +8,7 @@ namespace Long_ARM_GC_Project_1
     {
         private static List<string> options = new List<string> { "Add/Remove/Display a Member", "Check a Member in", "Display a Bill of Fees", "Exit" };
         public static Clubs ClubDB { get; set; }
-        private static FauxGUI _GUI = new FauxGUI();
+        private static FauxGUI _GUI = new FauxGUI(ConsoleColor.Black, ConsoleColor.Green);
 
         public static void MemberAction(Member m)         //displays the info of the member passed to it.
         {
@@ -48,11 +48,11 @@ namespace Long_ARM_GC_Project_1
             int selection = 0;
             while (true)
             {
-                _GUI.ResetBuffer();
                 _GUI.SetHeader("Hello, welcome to Universal Fitness!"); //add the header to the buffer
+                _GUI.ResetBuffer();
                 _GUI.SetMenu(OptionView.Display(options, selection));              //add the menu to the buffer
                 _GUI.SetMenuWait();
-                _GUI.DrawGUI();
+                _GUI.RefreshGUI();
                 ConsoleKey keyPress = Console.ReadKey(false).Key;
                 switch (keyPress)
                 {
