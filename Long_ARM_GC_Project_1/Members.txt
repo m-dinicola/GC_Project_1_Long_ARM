@@ -2,3 +2,4 @@
 20000|Test MultiMember|56
 20001|Todd|Hercules Fitness
 20002|Jim|Hercules Fitness
+20003|Paula|0

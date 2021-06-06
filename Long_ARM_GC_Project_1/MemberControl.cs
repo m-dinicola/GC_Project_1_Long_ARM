@@ -91,11 +91,8 @@ namespace Long_ARM_GC_Project_1
         {
             while (!AddMemberLoop())
             {
-                if (getYesNo("Would you like to go back to the Member Menu?"))
-                {
-                    return;
-                }
             }
+            return;
 
 
         }
@@ -116,11 +113,11 @@ namespace Long_ARM_GC_Project_1
             try
             {
                 string clubName = GUIPrompt($"Please enter the name of the club that {name} would like to join: ");
-                Club club = clubs.ClubDictionary[Console.ReadLine()];
-                if (getYesNo($"The person named \"{name}\" would like to be a member of {name}. Is this correct? "))
+                Club club = clubs.ClubDictionary[clubName];
+                if (getYesNo($"The person named \"{name}\" would like to be a member of {clubName}. Is this correct? "))
                 {
                     members.Add(new SingleClubMembers(_ID, name, club));
-                    return !getYesNo($"{name} has been added as a member of {club.Name}. Would you like to add another member? ");
+                    return !getYesNo($"{name} has been added as a member of {clubName}. Would you like to add another member? ");
                 }
                 return !getYesNo($"{name} has not been added as a member. Would you like to try again?");
             }
