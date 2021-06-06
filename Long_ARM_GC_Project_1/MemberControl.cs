@@ -19,6 +19,7 @@ namespace Long_ARM_GC_Project_1
                 Name = input
             };
             member.CheckIn(club);
+            members.UpdateMembersFile();
             Console.ReadKey(false);
 
         }
@@ -137,7 +138,8 @@ namespace Long_ARM_GC_Project_1
             }
             members.Members.Remove(member.ID);
             members.UpdateMembersFile();
-            GUIPrepend($"{member.Name} has been removed from the system.\n");
+            Console.WriteLine($"{member.Name} has been removed from the system. Press \"ENTER\" to continue.");
+            Console.ReadKey(true);
         }
 
         public static void DisplayMemberInfo()

@@ -20,8 +20,8 @@ namespace Long_ARM_GC_Project_1
 
         public void SetHeader(string header)
         {
-            CurrentHeader = header;
-            GUIBuffer[0] = new GraphicUnit(DefaultBG, DefaultFG, header);
+            CurrentHeader = header.Trim();
+            GUIBuffer[0] = new GraphicUnit(DefaultBG, DefaultFG, CurrentHeader+"\n");
         }
 
         internal void SetMenu(Tuple<string, List<string>, int> tuple)
