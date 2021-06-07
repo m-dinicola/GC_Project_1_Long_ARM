@@ -166,7 +166,7 @@ namespace Long_ARM_GC_Project_1
         }
         public static string ParseMember(MultiClubMembers member)
         {
-            return ($"Club: Universal\n Membership Points: {member.MembershipPoints}\n\n");
+            return ($"Name: {member.Name}\nID#: {member.ID}\nClub: Universal\nMembership Points: {member.MembershipPoints}\n\n");
         }
 
         public static bool getYesNo(string message)

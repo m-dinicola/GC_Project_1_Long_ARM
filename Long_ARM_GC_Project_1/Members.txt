@@ -1,3 +1,4 @@
 10000|Test Single Member|Hercules Fitness
-20000|Test MultiMember|58
-20001|Todd|Hercules Fitness
+20000|Test MultiMember|5820001
+20001|Test4|Hercules Fitness
+20002|Todd Jim|0
