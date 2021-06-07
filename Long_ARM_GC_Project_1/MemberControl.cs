@@ -162,7 +162,7 @@ namespace Long_ARM_GC_Project_1
 
         public static string ParseMember(SingleClubMembers member)
         {
-            return ($"\nClub: {member.TheirClub.Name}\n Address: {member.TheirClub.Address}\n\n");
+            return ($"Name: {member.Name}\nID#: {member.ID}\nClub: {member.TheirClub.Name}\nAddress: {member.TheirClub.Address}\n\n");
         }
         public static string ParseMember(MultiClubMembers member)
         {
