@@ -78,10 +78,15 @@ namespace Long_ARM_GC_Project_1
                 }
                 else
                 {
-                    Member foundMember = members.GetMemberByName(response);
-                    if (foundMember != null)
+                    List<Member> namedMembers = members.MembersByName(response);
+                    if(namedMembers.Count > 1)
                     {
-                        return foundMember;
+                        int selection = MainMenuControl.MenuLoop("Member Selection", namedMembers.Select(x => x.ToString()).ToList(), "There was more than one member by that name. ");
+                        return namedMembers[selection];
+                    }
+                    if (namedMembers.Count == 1)
+                    {
+                        return namedMembers[0];
                     }
                     GUIPrepend($"No member was found with name \"{response}\". Please try again. \n");
                 }

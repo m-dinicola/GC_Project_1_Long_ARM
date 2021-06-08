@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Linq;
 
 namespace Long_ARM_GC_Project_1
 {
@@ -63,6 +64,11 @@ namespace Long_ARM_GC_Project_1
         public static string MemberToString(SingleClubMembers m)
         {
             return $"{m.ID}|{m.Name}|{m.TheirClub.Name}";
+        }
+
+        public List<Member> MembersByName(string name)
+        {
+            return Members.Values.Where(x=>x.Name.ToLower() == name.ToLower()).ToList();
         }
 
         public Member GetMemberByName(string name)

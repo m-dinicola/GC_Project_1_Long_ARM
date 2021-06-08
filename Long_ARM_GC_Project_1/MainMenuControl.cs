@@ -21,34 +21,18 @@ namespace Long_ARM_GC_Project_1
             while (tryAgain)
             {
                 int selection = MenuLoop("Hello, welcome to Universal Fitness!", options);
-
-                //int selection = -1;                         //selection will remain -1 if output was invalid.
-                //while (!int.TryParse(Console.ReadLine(), out selection) || selection > options.Count || selection <= 0)
-                //{                       //if tryParse fails, or if the int is outside the range of options this will run.
-                //    Console.Write($"Invalid entry. Please enter the number of your desired option. ");
-                //}
                 tryAgain = FunctionSwitch(selection);
                 //once a valid selection is confirmed, put up view for the option at the selection's index
-
-                //method for switching between functions        
-                //Console.WriteLine("Would you like to perform another action? (y/n)");
-                //string input = Console.ReadLine();
-                //while (input != "y" && input != "yes" && input != "n" && input != "no")
-                //{       //if the entry was invalid, we will re-prompwt.
-                //    Console.Write($"Invalid entry \"{input}\". Please try again. ");
-                //    input = Console.ReadLine();
-                //}
-                //tryAgain = input[0] == 'y';     //tryAgain will have the same value as the match between y and char 1 of entry.
             }
             Console.WriteLine("See Ya, Bro. May your weights be heavy, and your gains plentiful.");
         }
 
-        public static int MenuLoop(string header, List<string> _options)
+        public static int MenuLoop(string header, List<string> _options, string message)
         {
             int selection = 0;
             while (true)
             {
-                MainMenuView.RefreshGUI(header, _options, selection);
+                MainMenuView.RefreshGUI(header, _options, selection, message);
                 ConsoleKey keyPress = Console.ReadKey(true).Key;
                 switch (keyPress)
                 {
@@ -64,6 +48,11 @@ namespace Long_ARM_GC_Project_1
                         return selection;
                 }
             }
+        }
+
+        public static int MenuLoop(string header, List<string> _options)
+        {
+            return MenuLoop(header, _options, "");
         }
 
         public static bool FunctionSwitch(int selection)

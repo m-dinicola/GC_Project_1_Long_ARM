@@ -25,5 +25,10 @@ namespace Long_ARM_GC_Project_1
             Console.WriteLine("This member has been checked in (Enter to continue)\n");
             MembershipPoints++;
         }
+
+        public override string ToString()
+        {
+            return ($"Name: {Name}\tID#: {ID}\nClub: Universal\t Membership Points: {MembershipPoints}\n\n");
+        }
     }
 }

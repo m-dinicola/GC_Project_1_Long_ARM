@@ -10,7 +10,7 @@ namespace Long_ARM_GC_Project_1
         public Dictionary<string, Club> ClubDictionary {get; set;}
         public Clubs()
         {
-            ClubDictionary = new Dictionary<string, Club>();
+            ClubDictionary = new Dictionary<string, Club>(StringComparer.OrdinalIgnoreCase);
             string[] fileLines = File.ReadAllLines("../../../Clubs.txt");
             foreach (string line in fileLines)
             {

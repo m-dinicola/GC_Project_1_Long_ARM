@@ -20,6 +20,7 @@ namespace Long_ARM_GC_Project_1
             Name = name;
         }
 
+        public override abstract string ToString();
         public abstract void CheckIn(Club club);
     }
 }

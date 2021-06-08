@@ -49,5 +49,10 @@ namespace Long_ARM_GC_Project_1
                 Console.WriteLine("The member is not a member of this club. (Enter to continue)\n");
             }
         }
+
+        public override string ToString()
+        {
+            return ($"Name: {Name}\tID#: {ID}\nClub: {TheirClub.Name}\tAddress: {TheirClub.Address}\n\n");
+        }
     }
 }
